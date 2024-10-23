@@ -132,6 +132,8 @@ Not only does NGINX balance the load, but it also acts as a **TLS terminator**, 
 
 ### Redis: The Bridge Between Instances
 
+![broadcasting-redis-dark](https://github.com/user-attachments/assets/c1da7876-ec5e-4ade-8344-37a5c21bddc6)
+
 Even though Kubernetes and NGINX Ingress are distributing traffic and scaling up your servers, there’s another problem to solve. With multiple Socket.IO instances running, how do you make sure that events, like chat messages, are shared across all instances?
 
 This is where **Redis** comes in, playing the role of the bridge between all your Socket.IO instances. Think of Redis as the broadcast system for your servers. If one user sends a message while connected to Server A, you need that message to be visible to all users—even those connected to Server B or Server C. Without this, only some users would see the message, creating a fragmented and frustrating experience.
@@ -143,6 +145,8 @@ By using the **Redis Adapter** with Socket.IO, your servers can communicate with
 Imagine this setup in action: your chat app is humming with thousands of users. Kubernetes is scaling the Socket.IO instances dynamically, so when a spike in traffic happens, new instances come online without a hitch. NGINX Ingress is directing traffic to the right instances and ensuring that WebSocket connections stay stable. Meanwhile, Redis is making sure that messages are synced across all instances, so everyone stays connected in real-time.
 
 Here's a step-by-step guide on how to implement a scalable Socket.IO application using Kubernetes, NGINX Ingress, and Redis. Each step includes the necessary commands and YAML configurations.
+
+![image](https://github.com/user-attachments/assets/62cadb90-ac9d-4a49-9995-d43b3bdb04aa)
 
 ### Step 1: Set Up Kubernetes Cluster 🛠️
 
